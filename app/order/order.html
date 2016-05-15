@@ -1,0 +1,33 @@
+<p>Nº {{order.id}}</p>
+
+<form>
+	<input id="client-id" ng-model="clientId" ng-change="clientIdChanged(clientId)" ng-model-options="{debounce: 500}" type="number" placeholder="Cód."/>
+	<input id="client-name" ng-model="selectedClient.name" type="text" placeholder="Cliente" style="width: 50%;"/>
+	<input id="total-price" ng-model="totalPrice" type="number" placeholder="Preço Total" disabled/>
+	<br/>
+	<input id="product-id" ng-model="productId" ng-change="productIdChanged(productId)" ng-model-options="{debounce: 500}" type="number" placeholder="Cód."/>
+	<input id="product-name" ng-model="selectedProduct.name" type="text" placeholder="Produto" style="width: 50%;"/>
+	<input id="unit-price" ng-model="selectedProduct.unitPrice" type="number" placeholder="Preço Unit." disabled/>
+	<br/>
+	<input id="quantity" ng-model="quantity" ng-keypress="quantityEnter($event, quantity)" type="nome" placeholder="Quantidade"/>
+
+</form>
+
+<br/>
+
+<table style="width: 100%;">
+	<tr>
+		<th>Cód.</th>
+		<th>Descrição</th>
+		<th>Quant.</th>
+		<th>Preço Unit.</th>
+		<th>Preço Total</th>
+	</tr>
+	<tr ng-repeat="item in order.products">
+		<td>{{item.id}}</td>
+		<td>{{item.name}}</td>
+		<td>{{item.quantity}}</td>
+		<td>{{item.unitPrice}}</td>
+		<td>{{item.quantity * item.unitPrice}}</td>
+	</tr>
+</table>
